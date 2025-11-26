@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FCBV-Net: Category-Level Robotic Garment Smoothing via Feature-Conditioned Bimanual Value Prediction">
+  <meta name="keywords" content="Robotic Manipulation, Garment Smoothing, Deep Learning, FCBV-Net">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FCBV-Net: Category-Level Robotic Garment Smoothing</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <!-- CHANGE 1: Updated Link -->
+      <a class="navbar-item" href="https://github.com/dabaspark">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FCBV-Net: Category-Level Robotic Garment Smoothing via Feature-Conditioned Bimanual Value Prediction</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:daba@std.uestc.edu.cn">Mohammed Daba</a>,</span>
+            <span class="author-block">
+              <a href="mailto:qiujing@uestc.edu.cn">Jing Qiu</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              School of Mechanical and Electrical Engineering,<br>
+              University of Electronic Science and Technology of China (UESTC)
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- CHANGE 7: Added .pdf to ensure it opens the PDF file -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2508.05153.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- ArXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2508.05153" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <!-- CHANGE 2: Updated GitHub Link -->
+              <span class="link-block">
+                <a href="https://github.com/dabaspark/FCBV-Net" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- CHANGE 5: Added Dataset Tab -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASER VIDEO -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <!-- CHANGE 3: Removed 'dnerf' class from span to fix font size/caps -->
+      <h2 class="subtitle has-text-centered">
+        <span style="font-weight: bold;">FCBV-Net</span> transforms an arbitrarily crumpled garment into a smoothed state using bimanual manipulation.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Category-level generalization for robotic garment manipulation, such as bimanual smoothing, remains a significant hurdle due to high dimensionality, complex dynamics, and intra-category variations. Current approaches often struggle, either overfitting with concurrently learned visual features or failing to predict the value of synergistic actions.
+          </p>
+          <p>
+            We propose the <strong>Feature-Conditioned Bimanual Value Network (FCBV-Net)</strong>, operating on 3D point clouds to specifically enhance category-level policy generalization. FCBV-Net conditions bimanual action value prediction on pre-trained, frozen dense geometric features, ensuring robustness to intra-category garment variations. 
+          </p>
+          <p>
+            In simulated GarmentLab experiments with the CLOTH3D dataset, FCBV-Net demonstrated superior category-level generalization. It exhibited only an 11.5% efficiency drop on unseen garments compared to 96.2% for a 2D image-based baseline, and achieved <strong>89% final coverage</strong>. These results highlight that the decoupling of geometric understanding from bimanual action value learning enables better category-level generalization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANGE 6: PRESENTATION VIDEO -->
+<!-- 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Presentation Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- METHOD / ARCHITECTURE -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            The core hypothesis is that explicitly conditioning an action's value on robust, pre-trained per-point geometric features improves generalization. We use dense features pre-trained for structural understanding and keep them frozen during policy learning.
+          </p>
+          <!-- Architecture Image -->
+          <img src="./static/images/architecture.jpg" alt="FCBV-Net Architecture" style="width:100%; margin-bottom: 20px;">
+          <p>
+            <strong>FCBV-Net Architecture:</strong> Dense geometric features are extracted by a pre-trained and frozen PointNet++ backbone. A ValueDecoderPN++ Network predicts initial grasp quality, while a parallel Primitive Selection Head determines the manipulation primitive (Fling, Drag, PickPlace).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA PREPARATION (Matrix) -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Data Preparation Stage</h2>
+    <div class="content has-text-centered">
+      <p>Select a category to view the dataset samples (12 samples per category).</p>
+      
+      <!-- Category Buttons -->
+      <div class="buttons is-centered" style="margin-bottom: 30px;">
+        <button class="button is-info is-selected" onclick="changeCategory('top', this)">Top</button>
+        <button class="button" onclick="changeCategory('dress', this)">Dress</button>
+        <button class="button" onclick="changeCategory('trouser', this)">Trouser</button>
+      </div>
+
+      <!-- Video Grid Container -->
+      <div class="columns is-multiline is-mobile" id="video-grid">
+        <!-- Videos will be injected here by JavaScript -->
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+ 
+<!-- RESULTS CAROUSEL -->
+<!--
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Simulation Results</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/result1.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/result2.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/result3.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{daba2025fcbvnet,
+      title={FCBV-Net: Category-Level Robotic Garment Smoothing via Feature-Conditioned Bimanual Value Prediction}, 
+      author={Mohammed Daba and Jing Qiu},
+      year={2025},
+      url={https://arxiv.org/abs/2508.05153}, 
+      doi={10.48550/arXiv.2508.05153}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
