@@ -35,6 +35,59 @@ $(document).ready(function() {
     }
 })
 
+const backboneImages = [
+    '00037.jpg', '00044.jpg', '00046.jpg', '00050.jpg',
+    '00061.jpg', '00064.jpg', '00068.jpg', '00097.jpg', '00105.jpg',
+    '00141.jpg', '00142.jpg', '00152.jpg', '00187.jpg', '00193.jpg',
+    '00217.jpg', '00258.jpg', '00262.jpg', '00289.jpg', '00305.jpg'
+];
+let currentBackboneIndex = 0;
+
+function switchSupTab(tabIndex, el) {
+    // Update tab styling
+    const tabs = el.closest('.tabs').querySelectorAll('li');
+    tabs.forEach(tab => tab.classList.remove('is-active'));
+    el.parentElement.classList.add('is-active');
+
+    // Show/hide content
+    for (let i = 1; i <= 3; i++) {
+        const content = document.getElementById('content-sup-' + i);
+        if (content) {
+            content.style.display = (i === tabIndex) ? 'block' : 'none';
+        }
+    }
+}
+
+function switchMainTab(tabName, el) {
+    // Update tab styling
+    const tabs = el.closest('.tabs').querySelectorAll('li');
+    tabs.forEach(tab => tab.classList.remove('is-active'));
+    el.parentElement.classList.add('is-active');
+
+    // Show/hide content
+    document.getElementById('content-data-prep').style.display = tabName === 'data-prep' ? 'block' : 'none';
+    document.getElementById('content-backbone').style.display = tabName === 'backbone' ? 'block' : 'none';
+}
+
+function changeBackboneImage(direction) {
+    currentBackboneIndex += direction;
+    if (currentBackboneIndex < 0) {
+        currentBackboneIndex = backboneImages.length - 1;
+    } else if (currentBackboneIndex >= backboneImages.length) {
+        currentBackboneIndex = 0;
+    }
+    updateBackboneImage();
+}
+
+function updateBackboneImage() {
+    const img = document.getElementById('backbone-image');
+    const counter = document.getElementById('backbone-counter');
+    if (img && counter) {
+        img.src = `./static/images/Backbone Features Visualization/${backboneImages[currentBackboneIndex]}`;
+        counter.textContent = `${currentBackboneIndex + 1} / ${backboneImages.length}`;
+    }
+}
+
 // Function to generate the video grid
 function changeCategory(category, btnElement) {
     // 1. Update Buttons Styling
@@ -89,4 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Find the 'Top' button and trigger a click to load initial videos
     const topBtn = document.querySelector("button[onclick*='top']");
     if(topBtn) changeCategory('top', topBtn);
+
+    updateBackboneImage();
 });

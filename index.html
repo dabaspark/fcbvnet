@@ -132,6 +132,7 @@
       <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="./static/videos/teaser.mp4" type="video/mp4">
       </video>
+      <img src="./static/images/First_Image.jpg" alt="First Image" style="display: block; margin: 20px auto; max-width: 100%; border-radius: 5px;">
       <!-- CHANGE 3: Removed 'dnerf' class from span to fix font size/caps -->
       <h2 class="subtitle has-text-centered">
         <span style="font-weight: bold;">FCBV-Net</span> transforms an arbitrarily crumpled garment into a smoothed state using bimanual manipulation.
@@ -203,22 +204,63 @@
 <!-- DATA PREPARATION (Matrix) -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Data Preparation Stage</h2>
-    <div class="content has-text-centered">
-      <p>Select a category to view the dataset samples (12 samples per category).</p>
-      
-      <!-- Category Buttons -->
-      <div class="buttons is-centered" style="margin-bottom: 30px;">
-        <button class="button is-info is-selected" onclick="changeCategory('top', this)">Top</button>
-        <button class="button" onclick="changeCategory('dress', this)">Dress</button>
-        <button class="button" onclick="changeCategory('trouser', this)">Trouser</button>
-      </div>
+    <!-- Main Tabs -->
+    <div class="tabs is-centered is-boxed is-medium" style="margin-bottom: 20px;">
+      <ul>
+        <li class="is-active" id="tab-data-prep">
+          <a onclick="switchMainTab('data-prep', this)">
+            <span class="icon is-small"><i class="fas fa-database"></i></span>
+            <span>Data Preparation Stage</span>
+          </a>
+        </li>
+        <li id="tab-backbone">
+          <a onclick="switchMainTab('backbone', this)">
+            <span class="icon is-small"><i class="fas fa-image"></i></span>
+            <span>Backbone Features Visualization</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-      <!-- Video Grid Container -->
-      <div class="columns is-multiline is-mobile" id="video-grid">
-        <!-- Videos will be injected here by JavaScript -->
+    <!-- Data Preparation Content -->
+    <div id="content-data-prep">
+      <div class="content has-text-centered">
+        <p>Select a category to view the dataset samples (12 samples per category).</p>
+        
+        <!-- Category Buttons -->
+        <div class="buttons is-centered" style="margin-bottom: 30px;">
+          <button class="button is-info is-selected" onclick="changeCategory('top', this)">Top</button>
+          <button class="button" onclick="changeCategory('dress', this)">Dress</button>
+          <button class="button" onclick="changeCategory('trouser', this)">Trouser</button>
+        </div>
+
+        <!-- Video Grid Container -->
+        <div class="columns is-multiline is-mobile" id="video-grid">
+          <!-- Videos will be injected here by JavaScript -->
+        </div>
+        
       </div>
-      
+    </div>
+
+    <!-- Backbone Features Visualization Content -->
+    <div id="content-backbone" style="display: none;">
+      <div class="content has-text-centered">
+        <p>Visualizing backbone features for garment samples.</p>
+        <div style="position: relative; display: inline-block; max-width: 100%;">
+          <div style="margin-bottom: 15px;">
+            <button class="button" onclick="changeBackboneImage(-1)">
+              <span class="icon"><i class="fas fa-chevron-left"></i></span>
+              <span>Previous</span>
+            </button>
+            <span id="backbone-counter" style="margin: 0 15px; font-weight: bold;"></span>
+            <button class="button" onclick="changeBackboneImage(1)">
+              <span>Next</span>
+              <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </button>
+          </div>
+          <img id="backbone-image" src="" alt="Backbone Feature Visualization" style="max-width: 65%; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -255,6 +297,54 @@
   </div>
 </section>
 -->
+
+<!-- SUPPLEMENTARY MEDIA -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Supplementary Media</h2>
+    
+    <!-- Tabs -->
+    <div class="tabs is-centered is-boxed is-medium" style="margin-bottom: 20px;">
+      <ul>
+        <li class="is-active" id="tab-sup-1">
+          <a onclick="switchSupTab(1, this)">
+            <span>Dataset Collection</span>
+          </a>
+        </li>
+        <li id="tab-sup-2">
+          <a onclick="switchSupTab(2, this)">
+            <span>Self-Supervised Collection</span>
+          </a>
+        </li>
+        <li id="tab-sup-3">
+          <a onclick="switchSupTab(3, this)">
+            <span>Data Pool Generation</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="content-sup-1" class="has-text-centered">
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/rEfFNXk8yXg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <p style="margin-top: 10px;">FCBV Paper: Dataset Collection - Timelapse - All Primitives</p>
+    </div>
+    <div id="content-sup-2" class="has-text-centered" style="display: none;">
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/UhQvimxmAM4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <p style="margin-top: 10px;">FCBV Paper: Self-Supervised Data Collection - Timelapse</p>
+    </div>
+    <div id="content-sup-3" class="has-text-centered" style="display: none;">
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/OB474AuHe-s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <p style="margin-top: 10px;">FCBV Paper: Data Pool Generation - Timelapse</p>
+    </div>
+  </div>
+</section>
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
