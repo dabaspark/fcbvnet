@@ -110,6 +110,8 @@ function updateBackboneImage() {
     const img = document.getElementById('backbone-image');
     const counter = document.getElementById('backbone-counter');
     if (img && counter) {
+        img.style.visibility = 'hidden';
+        img.onload = function() { img.style.visibility = 'visible'; };
         img.src = `./static/images/Backbone Features Visualization/${backboneImages[currentBackboneIndex]}`;
         counter.textContent = `${currentBackboneIndex + 1} / ${backboneImages.length}`;
     }
@@ -130,6 +132,8 @@ function updateRolloutImage() {
     const counter = document.getElementById('rollout-counter');
     const caption = document.getElementById('rollout-caption');
     if (img && counter && caption) {
+        img.style.visibility = 'hidden';
+        img.onload = function() { img.style.visibility = 'visible'; };
         img.src = `./static/images/Self_supervised_data_collection_rollout/${rolloutImages[currentRolloutIndex].file}`;
         counter.textContent = `${currentRolloutIndex + 1} / ${rolloutImages.length}`;
         caption.textContent = rolloutImages[currentRolloutIndex].label;
@@ -151,6 +155,8 @@ function updateResultCompImage() {
     const counter = document.getElementById('result-comp-counter');
     const caption = document.getElementById('result-comp-caption');
     if (img && counter && caption) {
+        img.style.visibility = 'hidden';
+        img.onload = function() { img.style.visibility = 'visible'; };
         img.src = `./static/images/Result/${resultCompImages[currentResultCompIndex].file}`;
         counter.textContent = `${currentResultCompIndex + 1} / ${resultCompImages.length}`;
         caption.textContent = resultCompImages[currentResultCompIndex].label;
@@ -172,6 +178,8 @@ function updateCollectionFlowImage() {
     const counter = document.getElementById('collection-flow-counter');
     const caption = document.getElementById('collection-flow-caption');
     if (img && counter && caption) {
+        img.style.visibility = 'hidden';
+        img.onload = function() { img.style.visibility = 'visible'; };
         img.src = `./static/images/Human Dataset Collection Flow Examples/${collectionFlowImages[currentCollectionFlowIndex].file}`;
         counter.textContent = `${currentCollectionFlowIndex + 1} / ${collectionFlowImages.length}`;
         caption.textContent = collectionFlowImages[currentCollectionFlowIndex].label;
