@@ -60,6 +60,14 @@ const resultCompImages = [
 ];
 let currentResultCompIndex = 0;
 
+const collectionFlowImages = [
+    { file: 'Drag_figure.png', label: 'Drag Primitive' },
+    { file: 'Fling_figure.png', label: 'Fling Primitive' },
+    { file: 'Pick&Place_figure.png', label: 'Pick & Place Primitive' },
+    { file: 'Done_figure.png', label: 'Done Primitive' }
+];
+let currentCollectionFlowIndex = 0;
+
 function switchSupTab(tabIndex, el) {
     // Update tab styling
     const tabs = el.closest('.tabs').querySelectorAll('li');
@@ -85,6 +93,7 @@ function switchMainTab(tabName, el) {
     document.getElementById('content-data-prep').style.display = tabName === 'data-prep' ? 'block' : 'none';
     document.getElementById('content-backbone').style.display = tabName === 'backbone' ? 'block' : 'none';
     document.getElementById('content-rollout').style.display = tabName === 'rollout' ? 'block' : 'none';
+    document.getElementById('content-collection-flow').style.display = tabName === 'collection-flow' ? 'block' : 'none';
 }
 
 function changeBackboneImage(direction) {
@@ -148,6 +157,27 @@ function updateResultCompImage() {
     }
 }
 
+function changeCollectionFlowImage(direction) {
+    currentCollectionFlowIndex += direction;
+    if (currentCollectionFlowIndex < 0) {
+        currentCollectionFlowIndex = collectionFlowImages.length - 1;
+    } else if (currentCollectionFlowIndex >= collectionFlowImages.length) {
+        currentCollectionFlowIndex = 0;
+    }
+    updateCollectionFlowImage();
+}
+
+function updateCollectionFlowImage() {
+    const img = document.getElementById('collection-flow-image');
+    const counter = document.getElementById('collection-flow-counter');
+    const caption = document.getElementById('collection-flow-caption');
+    if (img && counter && caption) {
+        img.src = `./static/images/Human Dataset Collection Flow Examples/${collectionFlowImages[currentCollectionFlowIndex].file}`;
+        counter.textContent = `${currentCollectionFlowIndex + 1} / ${collectionFlowImages.length}`;
+        caption.textContent = collectionFlowImages[currentCollectionFlowIndex].label;
+    }
+}
+
 // Function to generate the video grid
 function changeCategory(category, btnElement) {
     // 1. Update Buttons Styling
@@ -206,4 +236,5 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBackboneImage();
     updateRolloutImage();
     updateResultCompImage();
+    updateCollectionFlowImage();
 });

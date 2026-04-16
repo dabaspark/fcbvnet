@@ -267,6 +267,12 @@
             <span>Self-Supervised Rollouts</span>
           </a>
         </li>
+        <li id="tab-collection-flow">
+          <a onclick="switchMainTab('collection-flow', this)">
+            <span class="icon is-small"><i class="fas fa-project-diagram"></i></span>
+            <span>Dataset Collection Flow</span>
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -329,6 +335,28 @@
           </div>
           <img id="rollout-image" src="" alt="Self-Supervised Rollout" style="max-width: 85%; border-radius: 5px; border: 1px solid #ddd;">
           <p id="rollout-caption" style="margin-top: 10px; font-style: italic;"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dataset Collection Flow Content -->
+    <div id="content-collection-flow" style="display: none;">
+      <div class="content has-text-centered">
+        <p>Human dataset collection flow examples illustrating each manipulation primitive.</p>
+        <div style="position: relative; display: inline-block; max-width: 100%;">
+          <div style="margin-bottom: 15px;">
+            <button class="button" onclick="changeCollectionFlowImage(-1)">
+              <span class="icon"><i class="fas fa-chevron-left"></i></span>
+              <span>Previous</span>
+            </button>
+            <span id="collection-flow-counter" style="margin: 0 15px; font-weight: bold;"></span>
+            <button class="button" onclick="changeCollectionFlowImage(1)">
+              <span>Next</span>
+              <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </button>
+          </div>
+          <img id="collection-flow-image" src="" alt="Dataset Collection Flow" style="max-width: 65%; border-radius: 5px; border: 1px solid #ddd;">
+          <p id="collection-flow-caption" style="margin-top: 10px; font-style: italic;"></p>
         </div>
       </div>
     </div>
