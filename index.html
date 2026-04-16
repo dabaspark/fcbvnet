@@ -219,6 +219,24 @@
           <p>
             On unseen garments, FCBV-Net maintained high efficiency with only an 11.5% performance drop and achieved 89% final coverage. In contrast, the 2D baseline suffered a 96.2% drop, while the 3D correspondence baseline achieved 83% coverage with a fixed primitive. These results validate that decoupling geometric understanding from bimanual action value learning enables both high effectiveness and robust generalization.
           </p>
+          <div class="content has-text-centered" style="margin-top: 30px;">
+            <p><strong>Baseline vs FCBV-Net Comparison Gallery</strong></p>
+            <div style="position: relative; display: inline-block; max-width: 100%;">
+              <div style="margin-bottom: 15px;">
+                <button class="button" onclick="changeResultCompImage(-1)">
+                  <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                  <span>Previous</span>
+                </button>
+                <span id="result-comp-counter" style="margin: 0 15px; font-weight: bold;"></span>
+                <button class="button" onclick="changeResultCompImage(1)">
+                  <span>Next</span>
+                  <span class="icon"><i class="fas fa-chevron-right"></i></span>
+                </button>
+              </div>
+              <img id="result-comp-image" src="" alt="Baseline vs FCBV-Net Comparison" style="max-width: 90%; border-radius: 5px; border: 1px solid #ddd;">
+              <p id="result-comp-caption" style="margin-top: 10px; font-style: italic;"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -241,6 +259,12 @@
           <a onclick="switchMainTab('backbone', this)">
             <span class="icon is-small"><i class="fas fa-image"></i></span>
             <span>Backbone Features Visualization</span>
+          </a>
+        </li>
+        <li id="tab-rollout">
+          <a onclick="switchMainTab('rollout', this)">
+            <span class="icon is-small"><i class="fas fa-play-circle"></i></span>
+            <span>Self-Supervised Rollouts</span>
           </a>
         </li>
       </ul>
@@ -283,6 +307,28 @@
             </button>
           </div>
           <img id="backbone-image" src="" alt="Backbone Feature Visualization" style="max-width: 65%; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Self-Supervised Rollouts Content -->
+    <div id="content-rollout" style="display: none;">
+      <div class="content has-text-centered">
+        <p>Self-supervised data collection rollouts showing successful and unsuccessful interactions.</p>
+        <div style="position: relative; display: inline-block; max-width: 100%;">
+          <div style="margin-bottom: 15px;">
+            <button class="button" onclick="changeRolloutImage(-1)">
+              <span class="icon"><i class="fas fa-chevron-left"></i></span>
+              <span>Previous</span>
+            </button>
+            <span id="rollout-counter" style="margin: 0 15px; font-weight: bold;"></span>
+            <button class="button" onclick="changeRolloutImage(1)">
+              <span>Next</span>
+              <span class="icon"><i class="fas fa-chevron-right"></i></span>
+            </button>
+          </div>
+          <img id="rollout-image" src="" alt="Self-Supervised Rollout" style="max-width: 85%; border-radius: 5px; border: 1px solid #ddd;">
+          <p id="rollout-caption" style="margin-top: 10px; font-style: italic;"></p>
         </div>
       </div>
     </div>

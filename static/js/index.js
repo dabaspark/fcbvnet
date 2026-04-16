@@ -43,6 +43,23 @@ const backboneImages = [
 ];
 let currentBackboneIndex = 0;
 
+const rolloutImages = [
+    { file: 'figure_1_Self_supervised_data_collection_rollout_unsuccessful_2_step.png', label: 'Unsuccessful Rollout — 2 Steps' },
+    { file: 'figure_2_Self_supervised_data_collection_rollout_successful_1_step.png', label: 'Successful Rollout — 1 Step' },
+    { file: 'figure_4_Self_supervised_data_collection_rollout_unsuccessful_2_step.png', label: 'Unsuccessful Rollout — 2 Steps' },
+    { file: 'figure_5_Self_supervised_data_collection_rollout_successful_1_step.png', label: 'Successful Rollout — 1 Step' }
+];
+let currentRolloutIndex = 0;
+
+const resultCompImages = [
+    { file: '30 comparison of baseline vs FCBV.png', label: 'Comparison 1' },
+    { file: '30 comparison of baseline vs FCBV- Copy.png', label: 'Comparison 2' },
+    { file: '30 comparison of baseline vs FCBV - Copy (2).png', label: 'Comparison 3' },
+    { file: '30 comparison of baseline vs FCBV - Copy (3).png', label: 'Comparison 4' },
+    { file: '30 comparison of baseline vs FCBV - Copy (4).png', label: 'Comparison 5' }
+];
+let currentResultCompIndex = 0;
+
 function switchSupTab(tabIndex, el) {
     // Update tab styling
     const tabs = el.closest('.tabs').querySelectorAll('li');
@@ -67,6 +84,7 @@ function switchMainTab(tabName, el) {
     // Show/hide content
     document.getElementById('content-data-prep').style.display = tabName === 'data-prep' ? 'block' : 'none';
     document.getElementById('content-backbone').style.display = tabName === 'backbone' ? 'block' : 'none';
+    document.getElementById('content-rollout').style.display = tabName === 'rollout' ? 'block' : 'none';
 }
 
 function changeBackboneImage(direction) {
@@ -85,6 +103,48 @@ function updateBackboneImage() {
     if (img && counter) {
         img.src = `./static/images/Backbone Features Visualization/${backboneImages[currentBackboneIndex]}`;
         counter.textContent = `${currentBackboneIndex + 1} / ${backboneImages.length}`;
+    }
+}
+
+function changeRolloutImage(direction) {
+    currentRolloutIndex += direction;
+    if (currentRolloutIndex < 0) {
+        currentRolloutIndex = rolloutImages.length - 1;
+    } else if (currentRolloutIndex >= rolloutImages.length) {
+        currentRolloutIndex = 0;
+    }
+    updateRolloutImage();
+}
+
+function updateRolloutImage() {
+    const img = document.getElementById('rollout-image');
+    const counter = document.getElementById('rollout-counter');
+    const caption = document.getElementById('rollout-caption');
+    if (img && counter && caption) {
+        img.src = `./static/images/Self_supervised_data_collection_rollout/${rolloutImages[currentRolloutIndex].file}`;
+        counter.textContent = `${currentRolloutIndex + 1} / ${rolloutImages.length}`;
+        caption.textContent = rolloutImages[currentRolloutIndex].label;
+    }
+}
+
+function changeResultCompImage(direction) {
+    currentResultCompIndex += direction;
+    if (currentResultCompIndex < 0) {
+        currentResultCompIndex = resultCompImages.length - 1;
+    } else if (currentResultCompIndex >= resultCompImages.length) {
+        currentResultCompIndex = 0;
+    }
+    updateResultCompImage();
+}
+
+function updateResultCompImage() {
+    const img = document.getElementById('result-comp-image');
+    const counter = document.getElementById('result-comp-counter');
+    const caption = document.getElementById('result-comp-caption');
+    if (img && counter && caption) {
+        img.src = `./static/images/Result/${resultCompImages[currentResultCompIndex].file}`;
+        counter.textContent = `${currentResultCompIndex + 1} / ${resultCompImages.length}`;
+        caption.textContent = resultCompImages[currentResultCompIndex].label;
     }
 }
 
@@ -144,4 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if(topBtn) changeCategory('top', topBtn);
 
     updateBackboneImage();
+    updateRolloutImage();
+    updateResultCompImage();
 });
